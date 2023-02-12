@@ -20,9 +20,13 @@
   --hero-bg-cl: rgba(46, 47, 66, 0.7);
   --company-bg-cl: #e5e5e5;
   --foot-soc-cl: rgba(255, 255, 255, 0.1);
+  --modal-bg-cl: #fcfcfc;
   /* Others */
   --company-fl-cl: #8e8f99;
   --footer-bg-hov-cl: #31d0aa;
+
+  /* Animations Hover */
+  --trns-hov: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -99,7 +103,7 @@ button {
   align-items: center;
 }
 .header {
-  border-bottom: 1px solid #e7e9fc;
+  border-bottom: 1px solid var(--third-bg-cl);
   padding-top: 24px;
   padding-bottom: 24px;
 }
@@ -345,7 +349,7 @@ button {
   align-items: center;
   justify-content: center;
   background-color: var(--btn-bg-cl);
-  fill: #f4f4fd;
+  fill: var(--secondary-bg-cl);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -378,7 +382,7 @@ button {
 .customer-link {
   width: 168px;
   height: 88px;
-  border: 1px solid #8e8f99;
+  border: 1px solid var(--company-fl-cl);
   border-radius: 4px;
   fill: var(--company-fl-cl);
   background-repeat: no-repeat;
@@ -389,7 +393,7 @@ button {
 .customer-link:hover,
 .customer-link:focus {
   fill: var(--accent-bg-cl);
-  border: 1px solid #404bbf;
+  border: 1px solid var(--accent-bg-cl);
 }
 /* Footer */
 .footer {
@@ -429,7 +433,7 @@ button {
 .right-title {
   font-weight: 500;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--light-txt-cl);
   margin-bottom: 16px;
 }
 .footer-list {
@@ -444,7 +448,7 @@ button {
   align-items: center;
   justify-content: center;
   background-color: var(--foot-soc-cl);
-  fill: #f4f4fd;
+  fill: var(--secondary-bg-cl);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -481,7 +485,7 @@ button {
   color: var(--accent-txt-cl);
   background-color: var(--secondary-bg-cl);
   padding: 12px 24px;
-  border: 1px solid #e7e9fc;
+  border: 1px solid var(--third-bg-cl);
   border-radius: 4px;
   display: block;
 }
@@ -490,7 +494,7 @@ button {
 .filter-btn:focus {
   background-color: var(--accent-bg-cl);
   color: var(--light-txt-cl);
-  border: 1px solid #404bbf;
+  border: 1px solid var(--accent-bg-cl);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
@@ -525,9 +529,9 @@ button {
   color: var(--secondary-txt-cl);
 }
 .text-container {
-  border-left: 1px solid #e7e9fc;
-  border-bottom: 1px solid #e7e9fc;
-  border-right: 1px solid #e7e9fc;
+  border-left: 1px solid var(--third-bg-cl);
+  border-bottom: 1px solid var(--third-bg-cl);
+  border-right: 1px solid var(--third-bg-cl);
   padding: 32px 0px 32px 16px;
 }
 
@@ -541,17 +545,34 @@ Modal Window
   width: 100%;
   height: 100%;
   background-color: rgba(46, 47, 66, 0.4);
+  transition: opasity var(--trns-hov), visibility, var(--trns-hov);
+  transition-delay: 100ms;
+}
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 .modal {
   position: absolute;
-  top: 88px;
-  left: 516px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 408px;
   min-height: 576px;
   border-radius: 4px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: #fcfcfc;
+  background-color: var(--modal-bg-cl);
+
+  transition: transform 150ms ease, opacity 150ms ease;
+  transition-delay: 250ms;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -70%);
+  opacity: 0;
+  transition-delay: 0s;
 }
 .modal-btn {
   position: absolute;
