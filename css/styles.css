@@ -387,7 +387,7 @@ button {
   background-position: center;
   background-size: 104px 56px;
   padding: 16px 32px;
-  transition: fill, border, var(--trns-hov);
+  transition: fill var(--trns-hov), border var(--trns-hov);
 }
 .customer-link:hover,
 .customer-link:focus {
@@ -488,7 +488,8 @@ button {
   border: 1px solid var(--third-bg-cl);
   border-radius: 4px;
   display: block;
-  transition: background-color, color, border, box-shadow, var(--trns-hov);
+  transition: background-color var(--trns-hov), color var(--trns-hov),
+    border var(--trns-hov), box-shadow var(--trns-hov);
 }
 
 .filter-btn:hover,
@@ -623,3 +624,8 @@ Modal Window
 }
 .modal-icon {
 }
+
+/* .form-item {
+  width: 360px;
+  margin: auto;
+} */
